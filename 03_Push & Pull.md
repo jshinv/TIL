@@ -37,8 +37,17 @@ $ git status
 
 ```shell
 $ git add [추가된 파일]
+// 다중파일추가
+
+$ git add [추가할 파일1][추가할 파일1]
+// 현재폴더의 모든거 다 추가
+
+$ git add .
+
 $ git commit -m "메시지를 넣는다"
 $ git log
+
+// git 에 처음 올릴때만 remote 작성
 $ git remote add origin [원격저장소 주소: https://github.com/jshinv/TIL.git]
 $ git remote -v
 $ git push origin master

@@ -1,8 +1,8 @@
-# 수업노트(수업종료시 정리)
+# Fork-PR
 
 
 
-### Fork-PR(GitHub flow)
+### GitHub flow
 
 > 특정저장소의 코드를 나의 원격저장소로 가지고 오는것
 >
