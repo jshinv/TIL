@@ -100,31 +100,9 @@ $ git commit --amend
 
 // 워킹 디렉토리를 원격 저장소의 마지막 commit 상태로 되돌리기
 $ git reset --hard HEAD
-<<<<<<< HEAD:03_Git_instruction.md
-
-=======
->>>>>>> 276317d83c1c326d797be6a105212ed792945543:03_Push & Pull.md
 ```
 
 
-
-### 7.  Untracked files 한번에 삭제하기
-
-```shell
-// untracked 파일 삭제
-$ git clean -f [파일명]
-// untracked 파일 모두 삭제
-$ git clean -f
-
-// untracked 파일 및 디렉토리 삭제
-$ git clean -fd
-<<<<<<< HEAD:03_Git_instruction.md
-
-// status의 파일이 사라지지 않는 경우 강제로 모두 삭제
-$ git reset --hard
-=======
->>>>>>> 276317d83c1c326d797be6a105212ed792945543:03_Push & Pull.md
-```
 
 
 
