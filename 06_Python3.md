@@ -61,7 +61,15 @@ if __name__ == "__main__":
 {% endfor %}
 ```
 
+* 원래 Flask파일은 app.py로 사용해야 한다
 
 
-원래 Flask파일은 app.py로 사용해야 한다
 
+### Flask
+
+```
+// 1.0.0 버전으로 설치하기 
+$ pip3 install flask==1.0.0
+```
+
+http://127.0.0.1:5000/
