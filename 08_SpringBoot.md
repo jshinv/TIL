@@ -4,6 +4,18 @@
 
 
 
+1. STS 설치
+2. Lombok 설치 (STS위치에 설치)
+3. Controller Class생성
+   - 메소트(GetMapping / @RequestMapping)
+   - ResponseBody(JSON) 또는 RestController(HTML)
+
+
+
+---
+
+
+
 ###### lombok.jar install (window)
 
 > Mac 은 그냥 다운로드하면 사용가능
@@ -120,7 +132,11 @@ public class HtmlController {
 }
 ```
 
+Controller : 중요한 연산
 
+Model : 컨트롤러에서 작업했던 결과를 패스 한다. (모델이 없으면 결과값이 동일해짐)
+
+HTML : 단순뷰
 
 ---
 
@@ -147,4 +163,70 @@ public class HtmlController {
 - DELETE : 데이터 삭제
 
 
+
+### 요청처리
+
+- RequestParam  (편리함)
+  - 파라미터 명칭에 맞게 변수 사용
+  - 파라미터 종류 및 개수 상관없이 사용
+-  ModelAttribute (명확함)
+  - Model / DTO / VO 등 객체와 연계하여 활용
+  - JPA, MyBatis 등 ORM 프레임워크 활용 
+
+
+
+### LoginController
+
+```java
+package com.jshinv.basic.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class LoginCotroller {
+	// 보여주는 페이지
+  @GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+  // 프로그램이 동작한 이후 보여지는 페이지
+  // 위의 login과 이름은 같으나 주소를 통해 직접 접근은 불가능(Post방식)
+	@PostMapping("/login")
+	@ResponseBody
+	public String loginPost(
+			@RequestParam("id") String id,
+			@RequestParam("pw") String pw) {
+		
+		String dbId = "boot";
+		String dbPw = "1234";
+		
+		if(dbId.equals(id) && dbPw.equals(pw)) {
+			return "로그인 성공";
+		}
+		
+		return "로그인 실패";
+	}
+}
+
+```
+
+
+
+### Thymeleaf
+
+> 아래의 표현방식을 권장한다.(html에서 이렇게 쓸것)
+
+```html
+아이디
+<span th:text="${user.userId}"></span>
+<br> 이름:
+<span th:text="${user.userName}"></span>
+<br> 나이:
+<span th:text="${user.userAge}"></span>
+```
 
