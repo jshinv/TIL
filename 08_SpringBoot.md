@@ -5,7 +5,7 @@
 
 
 1. STS 설치
-2. Lombok 설치 (STS위치에 설치)
+2. Lombok 설치 (STS위치에 설치, 메소드 자동생성)
 3. Controller Class생성
    - 메소트(GetMapping / @RequestMapping)
    - ResponseBody(JSON) 또는 RestController(HTML)
@@ -34,7 +34,7 @@ Commanc + Shift + O : Import등 환경 맞추기
 
 
 
-### Controlle.java
+### Log for error
 
 ```java
 @RequestMapping("/")
@@ -77,6 +77,21 @@ logging.level.com.jshinv.basic=trace
 | ViewResolver      | ModelAndView에서 지정된 View 명을 기반으로 결과 처리 View 결정 |
 | View              | 컨트롤러가 로직을 수행하고 ModelAndView에 저장된 결과를 화면으로 출력 (일반적으로 JSP 또는 Velocity 같은 뷰 템플릿 사용) |
 
+**Model** : Repository(서비스 로직을 통하여 반환되어 브라우저에 표시될 정보)
+
+**View** :  template, 자바스크립트 처리(단순뷰)
+
+- 클라이언트는 3가지로 응답받을수 있다.
+  1. 화면
+  2. 이미지 파일
+  3. 파일 다운로드
+
+**Controller** : controller(중요한 연산)
+
+**Service** : 중간에서 요청과 응답을 처리(핸들러)
+
+---
+
 
 
 ### Controller_case
@@ -94,11 +109,14 @@ import com.jshinv.basic.model.Member;
 
 @Controller
 public class HtmlController {
+  
+  // String : 경로/파일명
+  // html 파일아래 string 파일을 찾아라
 	@GetMapping("html/string")
 	public String html() {
 		return "html/string";
 	}
-
+	
 	@GetMapping("html/void")
 	public void htmlVoid() {
 	}
@@ -132,11 +150,7 @@ public class HtmlController {
 }
 ```
 
-Controller : 중요한 연산
 
-Model : 컨트롤러에서 작업했던 결과를 패스 한다. (모델이 없으면 결과값이 동일해짐)
-
-HTML : 단순뷰
 
 ---
 
@@ -166,12 +180,16 @@ HTML : 단순뷰
 
 ### 요청처리
 
-- RequestParam  (편리함)
+- **RequestParam** (편리함) : 컨트롤러 메소드의 인자명과 동일
   - 파라미터 명칭에 맞게 변수 사용
   - 파라미터 종류 및 개수 상관없이 사용
--  ModelAttribute (명확함)
+-  **ModelAttribute**(명확함) : 모델 클래스의 변수명과 동일
   - Model / DTO / VO 등 객체와 연계하여 활용
   - JPA, MyBatis 등 ORM 프레임워크 활용 
+
+
+
+---
 
 
 
@@ -229,4 +247,27 @@ public class LoginCotroller {
 <br> 나이:
 <span th:text="${user.userAge}"></span>
 ```
+
+
+
+### Pagination
+
+```java
+@GetMapping("/linkUrl")
+	public String linkUrl(
+			// 파라미터로 Start와 End 값을 받는다
+//			@RequestParam int start,
+//			@RequestParam int end,
+			@RequestParam int now_page,
+			// 모델을 컨트롤러 안에서 만든다
+			Model model) {
+		// 모델을 만들어서 값을 변경한뒤 View에 보여준다
+		int start = (now_page -1 / 10 * 10 + 1);
+		model.addAttribute("start", 1);
+		model.addAttribute("end", 10);
+		return "linkUrl";
+	}
+```
+
+
 
