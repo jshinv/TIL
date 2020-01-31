@@ -74,7 +74,7 @@
 ```python
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    # models.ForeignKey : Question 테이블의 아이디를 ForeignKey 로 사용한다 
+    # models.ForeignKey : Question 테이블의 아이디를 ForeignKey 로 사용한다 
     # on_delete : 삭제되었을때, 어떻게 동작할 것인가? (CASCADE 되어라 : 데이터도 같이 삭제 되어라)  
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
@@ -108,6 +108,17 @@ class Shop(models.Model):
 
 Admin.py 에서 관리자 사이트에서 데이터를 관리할 수 있도록 등록
 
-**노트 (나중에 정리)**
 
-테이블을 만든적이 없다?
+
+
+
+
+
+
+
+
+
+
+
+
+
