@@ -1,6 +1,4 @@
-# Django
-
-
+# Django1
 
 ### 기본화면을 로컬서버에 에 띄워보자
 
@@ -10,7 +8,8 @@
 $ django-admin startproject [폴더명]
 ```
 
-2. App 생성
+2. 생성한 프로젝트로 이동한다
+3. App 생성
 
 > App 별로, view 와 model을 가질수 있다
 >
@@ -20,7 +19,9 @@ $ django-admin startproject [폴더명]
 $ django-admin startapp [App명]
 ```
 
-3. 프로젝트 실행
+4. VScode를 실행시킨다
+
+5. 프로젝트 실행
 
 ```shell
 $ python manage.py runserver
@@ -28,7 +29,7 @@ $ python manage.py runserver
 
 
 
-4. 언어 및 시간 설정 변경 
+6. 언어 및 시간 설정 변경 
 
 > settings.py 
 
@@ -39,7 +40,7 @@ TIME_ZONE = 'Asia/Seoul'
 
 
 
-6. 페이지 경로 설정하기 	
+7. 페이지 경로 설정하기 	
 
 > urls.py 
 
@@ -69,7 +70,7 @@ def main(request):
 
 
 
-7. 데이터 베이스 연결
+8. 데이터 베이스 연결
 
 > settings.py
 
@@ -88,7 +89,7 @@ DATABASES = {
 
 
 
-8. 모델 내용 반영
+9. 모델 내용 반영
 
 ```shell
  $ python manage.py makemigrations [App 이름]
@@ -172,6 +173,24 @@ urlpatterns = [
 
 
 ### Note
+
+**기본셋팅하는 법**
+
+```shell
+$ conda install mysqlclient
+```
+
+```shell
+$ conda install Django
+```
+
+.zshrc 파일에 경로 추가 (내 miniconda 위치 찾아서 넣어줄것)
+
+>  export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+
+
+
+
 
 setting : 데이터 설정시 중요
 
