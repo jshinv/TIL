@@ -40,6 +40,10 @@ TIME_ZONE = 'Asia/Seoul'
 
 
 
+6-2. settings.py 파일에 INSTALLED_APPS 추가 
+
+
+
 7. 페이지 경로 설정하기 	
 
 > urls.py 
@@ -98,6 +102,14 @@ DATABASES = {
 ```shell
 $ python manage.py migrate
 ```
+
+10. Shell 접속
+
+```shell
+$ python manage.py shell
+```
+
+
 
 
 
